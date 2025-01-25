@@ -43,7 +43,16 @@ def get_yt_opts():
         cookie_file_path = str(cookie_file.resolve())
         log.info(f'[youtube-dl] using cookies.txt from: {cookie_file_path}')
         opts.update({'cookiefile': cookie_file_path})
+    
+    extractor_args = {
+        'youtube': {
+            'getpot_bgutil_baseurl': 'http://192.168.2.3:4416'
+        }
+    }
+    opts.update({'extractor_args': extractor_args})
+    
     return opts
+
 
 def get_channel_id(url):
     # yt-dlp --simulate --no-check-formats --playlist-items 1
